@@ -1,0 +1,380 @@
+/* Start Variables */
+/* End Variables */
+/* Start Global Rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  line-height: 2;
+  background-position: center;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rules */
+
+/* Start Component  */
+nav {
+  z-index: 100;
+  position: fixed;
+  top: 21px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav i:hover {
+  cursor: pointer;
+}
+/* End Component  */
+@keyframes zoomin {
+  0% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 120%;
+  }
+}
+.zoom-in {
+  animation : zoomin 2s linear;
+  animation-fill-mode : forwards;
+}
+@keyframes zoomout {
+  0% {
+    background-size: 120%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+.zoom-out {
+  animation : zoomout 2s linear;
+  animation-fill-mode : forwards;
+}
+.absolute{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  opacity: 0;
+}
+@keyframes to-top {
+  0% {
+    margin-top: 100vh;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+.to-top {
+  animation : to-top 2s linear;
+  animation-fill-mode : forwards;
+}
+.reset {
+  transition: none !important;
+  top: 0 !important;
+  margin: 0 !important;
+}
+/* Start Header*/
+#header {
+  background-image: url("../images/Hero\ Image.png");
+  background-repeat: no-repeat;
+  background-size: 120%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  overflow: hidden;
+  z-index: 2; 
+  opacity: 1;
+}
+
+header h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 4em;
+  line-height: 1.2;
+  letter-spacing: -0.04rem;
+  margin: 16px auto;
+}
+header p {
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 18.91x;
+}
+header a {
+  text-decoration: none;
+  border: #fff 1px solid;
+  margin: 20px auto;
+  display: inline-block;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+header a:hover {
+  background-color: rgb(0 0 0 / 70%);
+  border-color: rgb(0 0 0 / 70%);
+}
+/* End Header*/
+/* Start Desing & Direction*/
+.design {
+  background-color: #FFF;
+}
+.design,
+.usefull,
+.services,
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.design .container,
+.usefull .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.design .container .text {
+  color: #000;
+}
+.design .container .text * {
+  color: inherit;
+}
+.design .container .text h2,
+.usefull .container .text h2,
+.services .container .text h2,
+.contact .container .text h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 44px;
+  line-height: 45px;
+  margin: 16px auto;
+}
+.design .container .text p,
+.usefull .container .text p,
+.services .container .text p,
+.contact .container .text p {
+  font-size: 14px;
+  font-weight: 300;
+  max-width: 350px;
+  line-height: 20px;
+  margin: 25px auto;
+}
+.design .container .text a {
+  text-decoration: none;
+  border: #000 1px solid;
+  margin: 10px auto;
+  display: inline-block;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+.design .container .text a:hover {
+  background-color: rgb(0 0 0 / 70%);
+  border-color: rgb(0 0 0 / 70%);
+  color: #fff;
+}
+/* End Desing & Direction*/
+/* Start usefull*/
+.usefull {
+  background-image: url("../images/Background\ Image.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.usefull .container {
+  width: 75%;
+}
+.usefull .container h2 {
+  font-weight: 500;
+}
+.usefull .container .text p {
+  max-width: 415px;
+}
+.usefull .text .features {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-align: center;
+  max-width: 320px;
+}
+.usefull .text .features div {
+  font-size: 14px;
+  font-weight: 300;
+  max-width: 350px;
+}
+.usefull .text .features div p {
+  margin-top: 0;
+}
+.usefull .container > img {
+  margin-right: 25px;
+}
+/* End usefull*/
+/* Start Services*/
+.services {
+  background-color: #323c6d;
+}
+.services .container {
+  width: 74%;
+}
+.services .container .text {
+  display: flex;
+  gap: 20px;
+}
+.services .container .text h2 {
+  max-width: 500px;
+  font-size: 32px;
+  margin: 20px 0px;
+}
+.services .container .text p {
+  font-size: 12px;
+  max-width: 215px;
+}
+.services .container .services-box {
+  display: flex;
+  gap: 50px;
+  text-align: center;
+  align-items: baseline;
+  margin-top: 75px;
+}
+.services .container .services-box div p {
+  font-size: 12px;
+}
+
+/* End Services*/
+/* Start Contact*/
+.contact {
+  background-image: url("../images/Background\ Image\ contact.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.contact .container {
+  display: flex;
+  justify-content: space-between;
+}
+.contact .container .text {
+  width: 40%;
+}
+.contact .container .text h2 {
+  font-weight: 500;
+}
+.contact .container .text p {
+  margin: 20px 0;
+  max-width: 475px;
+  width: 100%;
+}
+.contact .container .text p:last-of-type {
+  margin-bottom: 5px;
+}
+.contact .container .adress {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.contact .container .adress div {
+  width: 45%;
+}
+.contact .container .adress div p {
+  font-size: 10px;
+  margin: 0;
+}
+.contact .container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}:hover
+.contact .container ul li:first-of-type:hover i {
+  color: #F00;
+}
+.contact .container ul li:nth-of-type(2):hover i {
+  color: #00F;
+}
+.contact .container ul li:nth-of-type(3):hover i {
+  color: #4267b2;
+}
+.contact .container ul li:nth-of-type(4):hover i {
+  color: #008ee8;
+}
+.contact .container ul li:last-of-type:hover i {
+  color: #c21975;
+}
+.contact .container form {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+  align-items: flex-end;
+  margin-top: 43px;
+  font-size: 12px;
+}
+.contact .container form input {
+  padding-bottom: 10px;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+.contact .container form input::placeholder {
+  color: #fff;
+}
+.contact .container form input:not(:last-of-type) {
+  width: 32%;
+}
+.contact .container form input:last-of-type {
+  width: 100%;
+  margin-top: 75px;
+}
+.contact .container form button {
+  color: #000;
+  padding: 12.5px 50px;
+  border-radius: 25px;
+  border: none;
+  margin: 10px auto 0;
+  cursor: pointer;
+}
+.contact .container form button:hover {
+  background: black;
+  color: white;
+  border: black;
+}
+/* End Contact*/
