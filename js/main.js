@@ -106,5 +106,6 @@ function MouseWheelHandler(e) {
         } else onWheel = true
     } 
 }
-    window.addEventListener("wheel", MouseWheelHandler, false);
+    // window.addEventListener("wheel", MouseWheelHandler, false);
+    window.addEventListener("touchmove", MouseWheelHandler, false);
 
