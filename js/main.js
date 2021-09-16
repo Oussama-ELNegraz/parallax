@@ -7,8 +7,13 @@ const sections = [
 ];
 const icon = document.querySelector("nav i");
 const logo = document.querySelector("nav img");
+const circles = document.querySelectorAll(".progress-container .circle")
+const progressBar = document.querySelector(".progress-container span")
 let index = 0;
 let onWheel = true;
+let start;
+let end;
+
 
 
 
@@ -77,42 +82,86 @@ function translate(sec1, sec2,onwheel,direction = "top") {
     }, 1500);    
 }
 
-function MouseWheelHandler(delta) {
+function MouseWheelHandler(delta , click = 0 , idx = -1) {
     if (1) {        // This Will Change In the end to if ( onWheel )
         onWheel = false;
         if (delta > 0 && index > 0) {
             let sec1 = document.querySelector(sections[index][0]);
             index--;
             let sec2 = document.querySelector(sections[index][0]);
-            
             if (sections[index + 1][1] === "top") {
                 document.querySelector(sections[index][0]).style.top = "-100vh";
                 document.querySelector(sections[index][0]).style.marginTop = "0";
                 translate(sec1, sec2, onWheel, "bottom");
             } else
-            wheel(sec1, sec2, onWheel);
+                wheel(sec1, sec2, onWheel);
             
         } else if (delta < 0 && index < sections.length - 1) {
             let sec1 = document.querySelector(sections[index][0]);
             index++;
             let sec2 = document.querySelector(sections[index][0]);
-            
             if (sections[index][1] === "top") {
                 document.querySelector(sections[index][0]).style.top = "100vh";
                 document.querySelector(sections[index][0]).style.margin = "0";
                 translate(sec1, sec2, onWheel);
             } else
-            wheel(sec1, sec2, onWheel);
-        } else onWheel = true
+                wheel(sec1, sec2, onWheel);
+        } else if (click) {
+            if (index > idx) {
+                let sec1 = document.querySelector(sections[index][0]);
+                index = idx;
+                let sec2 = document.querySelector(sections[index][0]);
+                if (sections[index + 1][1] === "top") {
+                    document.querySelector(sections[index][0]).style.top = "-100vh";
+                    document.querySelector(sections[index][0]).style.marginTop = "0";
+                    translate(sec1, sec2, onWheel, "bottom");
+                } else
+                    wheel(sec1, sec2, onWheel);
+            } else {
+                let sec1 = document.querySelector(sections[index][0]);
+                index = idx;
+                let sec2 = document.querySelector(sections[index][0]);
+                if (sections[index][1] === "top") {
+                    document.querySelector(sections[index][0]).style.top = "100vh";
+                    document.querySelector(sections[index][0]).style.margin = "0";
+                    translate(sec1, sec2, onWheel);
+                } else
+                    wheel(sec1, sec2, onWheel);
+            }
+        } else onWheel = true;
+        updateProgressBar();
+        if (index === 1) {
+            icon.style.color = "#000";
+            logo.setAttribute("src", "images/Dark Logo.png");
+        } else {
+            icon.style.color = "#FFF";
+            logo.setAttribute("src", "images/Logo.png");
+        }
     } 
-    if (index === 1) {
-        icon.style.color = "#000";
-        logo.setAttribute("src","images/Dark Logo.png")
-    } else {
-        icon.style.color = "#FFF";
-        logo.setAttribute("src","images/Logo.png")
-    }
 }
+
+function updateProgressBar() {
+    circles.forEach((circle, idx) => {
+        if (idx < index + 1) {
+            circle.classList.add('active');
+            circle.style.transition = "3s";
+        } else {
+            circle.classList.remove('active');
+        }
+        progressBar.style.transition = "3s";
+        progressBar.style.height = (100 / (sections.length - 1)) * index + "%";
+    });
+}
+
+circles.forEach((circle , idx) => {
+    circle.addEventListener("click", () => {
+        let x;
+        index != idx ? x = 1 : x = 0;
+        MouseWheelHandler(0, x, idx);
+    });
+})
+
+
 window.addEventListener("wheel", (e) => {
     // cross-browser wheel delta
     var e = window.event || e;
@@ -120,8 +169,6 @@ window.addEventListener("wheel", (e) => {
     MouseWheelHandler(delta);
 });  
 
-var start;
-var end;
 window.addEventListener('touchstart', (e) => {
     start = e.changedTouches[0].pageY;
 });

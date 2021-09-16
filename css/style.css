@@ -149,8 +149,8 @@ header a:hover {
   border-color: rgb(0 0 0 / 70%);
 }
 :root {
---dimension-cercle : 12.5px; 
---border-height : 1px;
+--dimension-cercle : 20px; 
+--border-height : 4px;
 --backgrtound-cercle : calc(( var(--dimension-cercle) - 2 * var(--border-height))/ 2 ); 
 }
 body > .container {
@@ -165,44 +165,33 @@ body > .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 200px;
+  height: 300px;
   width: var(--dimension-cercle);
   position: relative;
 }
 .progress-container .progress {
   width: var(--border-height);
   position: absolute;
-  margin-top: calc(var(--dimension-cercle) / 2);
-  margin-bottom: calc(var(--dimension-cercle) / 2);
-  height: calc(100% - var(--dimension-cercle) ) ;
-  background: linear-gradient(
-    180deg,
-    transparent   var(--backgrtound-cercle),
-    #e0e0e0     var(--backgrtound-cercle),
-    #e0e0e0     calc(25% -  var(--backgrtound-cercle)),
-    transparent   calc(25% -  var(--backgrtound-cercle)),
-    transparent   calc(25% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(25% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(50% -  var(--backgrtound-cercle)),
-    transparent   calc(50% -  var(--backgrtound-cercle)),
-    transparent   calc(50% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(50% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(75% -  var(--backgrtound-cercle)),
-    transparent   calc(75% -  var(--backgrtound-cercle)),
-    transparent   calc(75% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(75% +  var(--backgrtound-cercle)),
-    #e0e0e0     calc(100% - var(--backgrtound-cercle)),
-    transparent   calc(100% - var(--backgrtound-cercle))
-  );
-  /* background: white; */
+  height: 100% ;
+  background: #e0e0e0;
   left: 50%;
   transform: translateX(-50%);
+}
+.progress-container span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: #3498db;
 }
 .progress-container .circle {
   width:  var(--dimension-cercle);
   height: var(--dimension-cercle);
   border: #e0e0e0 var(--border-height) solid;
+  background: #FFF;
   border-radius: 50%;
+  position: relative;
+  cursor: pointer;
 }
 .progress-container .circle.active {
   border: #3498db var(--border-height) solid;
@@ -564,6 +553,14 @@ body > .container {
   }
 }
 @media screen and (max-width: 768px) {
+  body > .container{
+    --dimension-cercle: 10px;
+    --border-height: 2px;
+    right: -5px;
+  }
+  .progress-container{
+    height: 200px;
+  }
   #header {
     background-image: url("../images/portrait5.jpg");
     background-color: rgb(0 0 0 / 50%);
