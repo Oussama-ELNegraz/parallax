@@ -1,9 +1,15 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* Start Variables */
 /* End Variables */
 /* Start Global Rules */
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: #fff;
   line-height: 2;
@@ -47,16 +53,30 @@ nav {
   z-index: 100;
   position: fixed;
   top: 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 90%;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 nav i:hover {
   cursor: pointer;
 }
 /* End Component  */
+@-webkit-keyframes zoomin {
+  0% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 120% 120%;
+  }
+}
 @keyframes zoomin {
   0% {
     background-size: 100% 100%;
@@ -66,8 +86,18 @@ nav i:hover {
   }
 }
 .zoom-in {
-  animation: zoomin 2s linear;
-  animation-fill-mode: forwards;
+  -webkit-animation: zoomin 2s linear;
+          animation: zoomin 2s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes zoomout {
+  0% {
+    background-size: 120% 120%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 @keyframes zoomout {
   0% {
@@ -78,8 +108,10 @@ nav i:hover {
   }
 }
 .zoom-out {
-  animation: zoomout 2s linear;
-  animation-fill-mode: forwards;
+  -webkit-animation: zoomout 2s linear;
+          animation: zoomout 2s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 .absolute {
   position: absolute;
@@ -88,6 +120,14 @@ nav i:hover {
   z-index: 1;
   width: 100%;
   opacity: 0;
+}
+@-webkit-keyframes to-top {
+  0% {
+    margin-top: 100%;
+  }
+  100% {
+    margin-top: 0%;
+  }
 }
 @keyframes to-top {
   0% {
@@ -98,10 +138,14 @@ nav i:hover {
   }
 }
 .to-top {
-  animation: to-top 2s linear;
-  animation-fill-mode: forwards;
+  -webkit-animation: to-top 2s linear;
+          animation: to-top 2s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 .reset {
+  -webkit-transition: none !important;
+  -o-transition: none !important;
   transition: none !important;
   top: 0 !important;
   margin: 0 !important;
@@ -112,10 +156,16 @@ nav i:hover {
   background-repeat: no-repeat;
   background-size: 120% 120%;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
   overflow: hidden;
   z-index: 2;
   opacity: 1;
@@ -157,14 +207,25 @@ body > .container {
   z-index: 5;
   position: fixed;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   right: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .progress-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 300px;
   width: var(--dimension-cercle);
   position: relative;
@@ -175,7 +236,9 @@ body > .container {
   height: 100% ;
   background: #e0e0e0;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 .progress-container span {
   display: block;
@@ -206,17 +269,29 @@ body > .container {
 .usefull,
 .services,
 .contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
   overflow: hidden;
 }
 .design .container,
 .usefull .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .design .container .text {
   color: #000;
@@ -276,9 +351,15 @@ body > .container {
   max-width: 415px;
 }
 .usefull .text .features {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   text-align: center;
   max-width: 320px;
 }
@@ -302,6 +383,8 @@ body > .container {
   width: 74%;
 }
 .services .container .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
 }
@@ -315,10 +398,14 @@ body > .container {
   max-width: 215px;
 }
 .services .container .services-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 50px;
   text-align: center;
-  align-items: baseline;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   margin-top: 75px;
 }
 .services .container .services-box div p {
@@ -334,7 +421,9 @@ body > .container {
   background-repeat: no-repeat;
 }
 .contact .container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 15px 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
@@ -350,8 +439,12 @@ body > .container {
   margin-bottom: 5px;
 }
 .contact .container .adress {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 90%;
 }
 .contact .container .adress div {
@@ -365,6 +458,8 @@ body > .container {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 15px;
 }
@@ -384,12 +479,23 @@ body > .container {
   color: #c21975;
 }
 .contact .container form {
+  grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-column: 2;
+  -ms-grid-column-span: 1;
   grid-area: 1 / 2 / span 2 / span 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   font-size: 14px;
-  align-items: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   margin-top: 20px;
   font-size: 12px;
 }
@@ -400,11 +506,23 @@ body > .container {
   border: none;
   border-bottom: 1px solid #fff;
 }
+.contact .container form input::-webkit-input-placeholder {
+  color: #fff;
+}
+.contact .container form input::-moz-placeholder {
+  color: #fff;
+}
+.contact .container form input:-ms-input-placeholder {
+  color: #fff;
+}
+.contact .container form input::-ms-input-placeholder {
+  color: #fff;
+}
 .contact .container form input::placeholder {
   color: #fff;
 }
 .contact .container form input:not(:last-of-type) {
-  width: 32%;
+  width: 30%;
 }
 .contact .container form input:last-of-type {
   width: 100%;
@@ -457,8 +575,13 @@ body > .container {
   /* End Header */
   /* Start Design */
   .design .container {
-    flex-direction: column-reverse;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
   }
   .design .container img {
@@ -469,7 +592,9 @@ body > .container {
   /* Start Usefull */
   .usefull .container {
     text-align: center;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .usefull .container > img {
     display: none;
@@ -482,8 +607,11 @@ body > .container {
   /* Start Services */
   .services .container .text {
     text-align: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .services .container .text p {
     margin: 0;
@@ -492,15 +620,26 @@ body > .container {
   /* End Services */
   /* Start Footer */
   footer.contact .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     gap: 40px;
   }
   footer.contact .title {
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
     margin-bottom: -50px;
   }
   .contact .container .title h2 {
@@ -511,7 +650,10 @@ body > .container {
     margin-top: 0;
   }
   footer.contact .container form {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 40px;
     width: 100%;
   }
@@ -522,11 +664,18 @@ body > .container {
     margin-top: 0px;
   }
   footer.contact .container .text * {
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   footer.contact .container .text .adress {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: auto;
   }
   footer.contact .container .text .adress div {
@@ -572,4 +721,3 @@ body > .container {
     background-blend-mode: hard-light;
   }
 }
-

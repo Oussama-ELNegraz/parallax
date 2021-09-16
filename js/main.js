@@ -83,7 +83,7 @@ function translate(sec1, sec2,onwheel,direction = "top") {
 }
 
 function MouseWheelHandler(delta , click = 0 , idx = -1) {
-    if (1) {        // This Will Change In the end to if ( onWheel )
+    if ( onWheel ) {        // This Will Change In the end to if ( onWheel )
         onWheel = false;
         if (delta > 0 && index > 0) {
             let sec1 = document.querySelector(sections[index][0]);
