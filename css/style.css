@@ -91,7 +91,7 @@ nav i:hover {
 }
 @keyframes to-top {
   0% {
-    margin-top: 100vh;
+    margin-top: 100%;
   }
   100% {
     margin-top: 0%;
@@ -115,7 +115,7 @@ nav i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   z-index: 2;
   opacity: 1;
@@ -148,57 +148,64 @@ header a:hover {
   background-color: rgb(0 0 0 / 70%);
   border-color: rgb(0 0 0 / 70%);
 }
-
+:root {
+--dimension-cercle : 12.5px; 
+--border-height : 1px;
+--backgrtound-cercle : calc(( var(--dimension-cercle) - 2 * var(--border-height))/ 2 ); 
+}
 body > .container {
   z-index: 5;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   right: 5px;
+  width: fit-content;
 }
 .progress-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 200px;
-  width: 12.5px;
+  width: var(--dimension-cercle);
   position: relative;
 }
 .progress-container .progress {
+  width: var(--border-height);
   position: absolute;
-  margin-top: 7.5px;
-  height: calc(100% - 15px);
-  width: 1px;
+  margin-top: calc(var(--dimension-cercle) / 2);
+  margin-bottom: calc(var(--dimension-cercle) / 2);
+  height: calc(100% - var(--dimension-cercle) ) ;
   background: linear-gradient(
     180deg,
-    transparent 6px,
-    #e0e0e0 6px,
-    #e0e0e0 calc(25% - 6px),
-    transparent calc(25% - 6px),
-    transparent calc(25% + 6px),
-    #e0e0e0 calc(25% + 6px),
-    #e0e0e0 calc(50% - 6px),
-    transparent calc(50% - 6px),
-    transparent calc(50% + 6px),
-    #e0e0e0 calc(50% + 6px),
-    #e0e0e0 calc(75% - 6px),
-    transparent calc(75% - 6px),
-    transparent calc(75% + 6px),
-    #e0e0e0 calc(75% + 6px),
-    #e0e0e0 calc(100% - 6px),
-    transparent calc(100% - 6px)
+    transparent   var(--backgrtound-cercle),
+    #e0e0e0     var(--backgrtound-cercle),
+    #e0e0e0     calc(25% -  var(--backgrtound-cercle)),
+    transparent   calc(25% -  var(--backgrtound-cercle)),
+    transparent   calc(25% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(25% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(50% -  var(--backgrtound-cercle)),
+    transparent   calc(50% -  var(--backgrtound-cercle)),
+    transparent   calc(50% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(50% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(75% -  var(--backgrtound-cercle)),
+    transparent   calc(75% -  var(--backgrtound-cercle)),
+    transparent   calc(75% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(75% +  var(--backgrtound-cercle)),
+    #e0e0e0     calc(100% - var(--backgrtound-cercle)),
+    transparent   calc(100% - var(--backgrtound-cercle))
   );
+  /* background: white; */
   left: 50%;
   transform: translateX(-50%);
 }
 .progress-container .circle {
-  width:  12.5px;
-  height: 12.5px;
-  border: #e0e0e0 1px solid;
+  width:  var(--dimension-cercle);
+  height: var(--dimension-cercle);
+  border: #e0e0e0 var(--border-height) solid;
   border-radius: 50%;
 }
 .progress-container .circle.active {
-  border: #3498db 1px solid;
+  border: #3498db var(--border-height) solid;
 }
 
 /* End Header*/
@@ -213,7 +220,7 @@ body > .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 .design .container,
