@@ -1,12 +1,15 @@
-let sections = [
+const sections = [
     ["header"   , "flow" ],
     ["#design"  , "top"  ],
     ["#usefull" , "flow" ],
     ["#services", "flow" ],
     ["footer"   , "flow" ]
 ];
+const icon = document.querySelector("nav i");
+const logo = document.querySelector("nav img");
 let index = 0;
 let onWheel = true;
+
 
 
 function wheel(sec1, sec2,onwheel) {
@@ -51,9 +54,9 @@ function translate(sec1, sec2,onwheel,direction = "top") {
     sec1.classList.remove('zoom-in');
     sec1.classList.add('zoom-out');
     sec2.classList.remove('zoom-out');
-    sec2.style.backgroundSize = "100%";
+    sec2.style.backgroundSize = "100% 100%";
     setTimeout(() => {
-        sec1.backgroundSize = "100%";
+        sec1.backgroundSize = "100% 100%";
         // Show Section 2
         sec2.style.opacity = 1;
         sec1.style.zIndex = 1;        
@@ -63,7 +66,7 @@ function translate(sec1, sec2,onwheel,direction = "top") {
         // Show Text
         setTimeout(() => {
             sec2.classList.add('zoom-in');
-            sec2.backgroundSize= "120%";
+            sec2.backgroundSize= "120% 120%";
             sec2.querySelector("*").style.transition = "0.5s";
             sec2.querySelector("*").style.opacity = "1";
             // Default Value
@@ -74,11 +77,8 @@ function translate(sec1, sec2,onwheel,direction = "top") {
     }, 1500);    
 }
 
-function MouseWheelHandler(e) {
-    // cross-browser wheel delta
-    var e = window.event || e;
-    var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    if (onWheel) {
+function MouseWheelHandler(delta) {
+    if (1) {        // This Will Change In the end to if ( onWheel )
         onWheel = false;
         if (delta > 0 && index > 0) {
             let sec1 = document.querySelector(sections[index][0]);
@@ -90,22 +90,45 @@ function MouseWheelHandler(e) {
                 document.querySelector(sections[index][0]).style.marginTop = "0";
                 translate(sec1, sec2, onWheel, "bottom");
             } else
-                wheel(sec1, sec2, onWheel);
+            wheel(sec1, sec2, onWheel);
             
         } else if (delta < 0 && index < sections.length - 1) {
             let sec1 = document.querySelector(sections[index][0]);
             index++;
             let sec2 = document.querySelector(sections[index][0]);
-
+            
             if (sections[index][1] === "top") {
                 document.querySelector(sections[index][0]).style.top = "100vh";
                 document.querySelector(sections[index][0]).style.margin = "0";
                 translate(sec1, sec2, onWheel);
             } else
-                wheel(sec1, sec2, onWheel);
+            wheel(sec1, sec2, onWheel);
         } else onWheel = true
     } 
+    if (index === 1) {
+        icon.style.color = "#000";
+        logo.setAttribute("src","images/Dark Logo.png")
+    } else {
+        icon.style.color = "#FFF";
+        logo.setAttribute("src","images/Logo.png")
+    }
 }
-    // window.addEventListener("wheel", MouseWheelHandler, false);
-    window.addEventListener("touchmove", MouseWheelHandler, false);
+window.addEventListener("wheel", (e) => {
+    // cross-browser wheel delta
+    var e = window.event || e;
+    var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+    MouseWheelHandler(delta);
+});  
+
+var start;
+var end;
+window.addEventListener('touchstart', (e) => {
+    start = e.changedTouches[0].pageY;
+});
+window.addEventListener('touchend', (e) => {
+    end = e.changedTouches[0].pageY;
+    delta = end - start;
+    MouseWheelHandler(delta);
+});
+
 
