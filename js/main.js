@@ -28,9 +28,11 @@ function wheel(sec1, sec2,onwheel) {
     sec1.classList.remove('zoom-in');
     sec1.classList.add('zoom-out');
     // Hide Section 1
+    sec1.style.transition = "3s";
     sec1.style.opacity = "0";  
     // Show Section 2
     sec2.style.zIndex = 2;        
+    sec2.style.transition = "3s opacity";
     sec2.style.opacity = "1";
     // Zoom In Backgournd
     sec2.classList.remove('zoom-out');
@@ -64,6 +66,7 @@ function translate(sec1, sec2,onwheel,direction = "top") {
         sec2.style.opacity = 1;
         sec1.style.zIndex = 1;        
         sec2.style.zIndex = 2;
+        sec2.style.transition = "3s margin";
         if(direction == "top") sec2.style.marginTop = "-100vh";  else  sec2.style.marginTop = "100vh";   
         // Show Text
         setTimeout(() => {
@@ -80,7 +83,7 @@ function translate(sec1, sec2,onwheel,direction = "top") {
 }
 
 function MouseWheelHandler(delta , click = 0 , idx = -1) {
-    if ( onWheel ) {        // This Will Change In the end to if ( onWheel )
+    if ( onWheel === true ) {        // This Will Change In the end to if ( onWheel )
         onWheel = false;
         if (delta > 0 && index > 0) {
             let sec1 = document.querySelector(sections[index][0]);
@@ -141,9 +144,11 @@ function updateProgressBar() {
     circles.forEach((circle, idx) => {
         if (idx < index + 1) {
             circle.classList.add('active');
+            circle.style.transition = "3s";
         } else {
             circle.classList.remove('active');
         }
+        progressBar.style.transition = "3s";
         progressBar.style.height = (100 / (sections.length - 1)) * index + "%";
     });
 }
