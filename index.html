@@ -27,10 +27,13 @@
             <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
+        <!-- Start Navbar -->
         <nav>
             <img src="images/Logo.png" alt="Logo">
             <i class="fas fa-bars"></i>        
         </nav>
+        <!-- End Navbar -->
+        <!-- Start bullets -->
         <div class="container">
             <div class="progress-container">
                 <div class="progress" id="progress"><span></span></div>
@@ -41,6 +44,33 @@
                 <div class="circle"></div>
             </div>
         </div>
+        <!-- End bullets -->
+        <!-- Start preload  -->
+        <div class="preload">
+            <h1>0%</h1>
+        </div>
+        <script>
+            var preload = document.querySelector("div.preload");
+            var h1 = document.querySelector("div.preload h1");
+            var i = 1;
+            var counter = setInterval(() => {
+                if(i===98) clearInterval(counter);
+                h1.innerHTML = ++i + "%";
+            }, 100);
+            window.addEventListener("load",()=>{
+                clearInterval(counter);
+                h1.innerHTML = "100%";
+                setTimeout(() => {          
+                    console.log(preload) ;  
+                    h1.style.opacity = "0";     
+                    h1.style.transition= ".5s";
+                    preload.style.transition= "1s";
+                    preload.style.opacity= "0";
+                    preload.style.zIndex= "-1";
+                }, 500);
+            })
+        </script>
+        <!-- End preload -->        
         <!-- Start Header  -->
         <header id="header" class="absolute">
             <div class="container">
