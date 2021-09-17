@@ -2,7 +2,7 @@ const sections = [
     ["header"   , "flow" ],
     ["#design"  , "top"  ],
     ["#usefull" , "flow" ],
-    ["#services", "flow" ],
+    ["#services", "top" ],
     ["footer"   , "flow" ]
 ];
 const icon = document.querySelector("nav i");
@@ -21,18 +21,18 @@ function wheel(sec1, sec2,onwheel) {
     sec1.classList.remove("reset");
     sec2.classList.remove("reset");
     // Hide Text
-    sec1.querySelector("*").style.transition = "0.5s";
+    sec1.querySelector("*").style.transition = "0.3s";
     sec1.querySelector("*").style.opacity = "0";
     sec2.querySelector("*").style.opacity = "0";
     // Zoom Out Background    
     sec1.classList.remove('zoom-in');
     sec1.classList.add('zoom-out');
     // Hide Section 1
-    sec1.style.transition = "3s";
+    sec1.style.transition = "1s";
     sec1.style.opacity = "0";  
     // Show Section 2
     sec2.style.zIndex = 2;        
-    sec2.style.transition = "3s opacity";
+    sec2.style.transition = "1s opacity";
     sec2.style.opacity = "1";
     // Zoom In Backgournd
     sec2.classList.remove('zoom-out');
@@ -40,7 +40,7 @@ function wheel(sec1, sec2,onwheel) {
     setTimeout(() => {        
         // Show Text
         setTimeout(() => {
-            sec2.querySelector("*").style.transition = "0.5s";
+            sec2.querySelector("*").style.transition = "0.3s";
             sec2.querySelector("*").style.opacity = "1";
             // Default Value
             sec1.style.zIndex = 1;
@@ -52,7 +52,7 @@ function wheel(sec1, sec2,onwheel) {
 function translate(sec1, sec2,onwheel,direction = "top") {
     sec2.classList.remove("reset");
     // Hide Text
-    sec1.querySelector("*").style.transition = "0.5s";
+    sec1.querySelector("*").style.transition = "0.3s";
     sec1.querySelector("*").style.opacity = "0";
     sec2.querySelector("*").style.opacity = "0";
     // Zoom In & Out Background    
@@ -66,19 +66,19 @@ function translate(sec1, sec2,onwheel,direction = "top") {
         sec2.style.opacity = 1;
         sec1.style.zIndex = 1;        
         sec2.style.zIndex = 2;
-        sec2.style.transition = "3s margin";
+        sec2.style.transition = "1s margin";
         if(direction == "top") sec2.style.marginTop = "-100vh";  else  sec2.style.marginTop = "100vh";   
         // Show Text
         setTimeout(() => {
             sec2.classList.add('zoom-in');
             sec2.backgroundSize= "120% 120%";
-            sec2.querySelector("*").style.transition = "0.5s";
+            sec2.querySelector("*").style.transition = "0.3s";
             sec2.querySelector("*").style.opacity = "1";
             // Default Value
             sec2.classList.add("reset");
             sec1.style.opacity = "0";
             setTimeout(() => onWheel = true, 1000);
-        }, 3000);    
+        }, 2000);    
     }, 1500);    
 }
 
@@ -144,11 +144,11 @@ function updateProgressBar() {
     circles.forEach((circle, idx) => {
         if (idx < index + 1) {
             circle.classList.add('active');
-            circle.style.transition = "3s";
+            circle.style.transition = "1s";
         } else {
             circle.classList.remove('active');
         }
-        progressBar.style.transition = "3s";
+        progressBar.style.transition = "1s";
         progressBar.style.height = (100 / (sections.length - 1)) * index + "%";
     });
 }
